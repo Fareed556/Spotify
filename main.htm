@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Pro - Live Stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="spotify-app">
+    <aside class="sidebar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="130" height="40">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.84-.179-.84-.66 0-.419.34-.719.78-.84 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.182 1.081zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+        </div>
+
+        <nav class="nav">
+            <button class="nav-item active" data-view="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 7.7a.5.5 0 0 0-.5.5v9.6a.5.5 0 0 0 .5.5h9.6a.5.5 0 0 0 .5-.5v-9.6a.5.5 0 0 0-.5-.5h-9.6zm-1 0H1.9a.5.5 0 0 0-.5.5v9.6a.5.5 0 0 0 .5.5h9.6a.5.5 0 0 0 .5-.5v-9.6a.5.5 0 0 0-.5-.5zm0-7.7H1.9a.5.5 0 0 0-.5.5v9.6a.5.5 0 0 0 .5.5h9.6a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zm11 0h-9.6a.5.5 0 0 0-.5.5v9.6a.5.5 0 0 0 .5.5h9.6a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5z"/></svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-view="search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28ZM2.033 10.559c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28Z"/></svg>
+                <span>Search</span>
+            </button>
+            <button class="nav-item" data-view="library">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H3zm15.5-2.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5v14a.5.5 0 0 0 .5.5h13zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+                <span>Your Library</span>
+            </button>
+        </nav>
+
+        <div class="playlists-section">
+            <div class="playlists-header">
+                <button class="create-playlist-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75H14.5a.75.75 0 0 1 .75.75z"/></svg>
+                    Create playlist
+                </button>
+            </div>
+            <div class="playlists-list" id="playlistsList">
+                <div class="playlist-item">Liked Songs</div>
+                <div class="playlist-item">My Playlist #1</div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="search-box">
+                <input type="text" placeholder="What do you want to play?" id="searchInput">
+            </div>
+            <div class="auth-buttons">
+                <span id="userDisplay" class="user-display" style="display: none;"></span>
+                <a href="register.html" class="register-btn">Sign up</a>
+                <button class="login-btn" id="authBtn">Log in</button>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <!-- Home View -->
+            <section class="view active" id="homeView">
+                <div class="greeting-section">
+                    <h1 class="greeting">Good evening</h1>
+                    <div class="quick-access" id="quickAccess"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Made for you</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="madeForYouRow"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Recently played</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="recentlyPlayedRow"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Popular artists</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="artistsRow"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Top charts</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="chartsRow"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>New releases</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="newReleasesRow"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2>Popular albums</h2>
+                        <span class="show-all">Show all</span>
+                    </div>
+                    <div class="card-row" id="albumsRow"></div>
+                </div>
+            </section>
+
+            <!-- Search View -->
+            <section class="view" id="searchView">
+                <div class="search-header">
+                    <h1>Search</h1>
+                </div>
+                <div class="search-categories" id="searchCategories"></div>
+                <div class="search-results" id="searchResults">
+                    <div class="section">
+                        <h2 class="results-title">Top result</h2>
+                        <div id="topResult"></div>
+                    </div>
+                    <div class="section">
+                        <h2 class="results-title">Songs</h2>
+                        <div id="searchSongs"></div>
+                    </div>
+                    <div class="section">
+                        <h2 class="results-title">Artists</h2>
+                        <div class="card-row" id="searchArtists"></div>
+                    </div>
+                    <div class="section">
+                        <h2 class="results-title">Albums</h2>
+                        <div class="card-row" id="searchAlbums"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Library View -->
+            <section class="view" id="libraryView">
+                <div class="library-header">
+                    <h1>Your Library</h1>
+                    <div class="library-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="playlists">Playlists</button>
+                        <button class="filter-btn" data-filter="artists">Artists</button>
+                        <button class="filter-btn" data-filter="albums">Albums</button>
+                    </div>
+                </div>
+                <div class="library-content" id="libraryContent">
+                    <div class="library-grid" id="libraryGrid"></div>
+                </div>
+            </section>
+
+            <!-- Album/Playlist View -->
+            <section class="view" id="albumView">
+                <div class="album-header">
+                    <img id="albumCover" src="" alt="">
+                    <div class="album-info">
+                        <span class="album-type" id="albumType">PLAYLIST</span>
+                        <h1 id="albumTitle"></h1>
+                        <p id="albumDesc"></p>
+                        <div class="album-meta">
+                            <span id="albumOwner"></span>
+                            <span id="albumStats"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="album-actions">
+                    <button class="play-button-large" id="playAlbumBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="action-btn">♡</button>
+                    <button class="action-btn">⋯</button>
+                </div>
+                <div class="track-list-container">
+                    <div class="track-list-header">
+                        <span>#</span>
+                        <span>Title</span>
+                        <span>Album</span>
+                        <span>⏱</span>
+                    </div>
+                    <div id="trackList"></div>
+                </div>
+            </section>
+
+            <!-- Artist View -->
+            <section class="view" id="artistView">
+                <div class="artist-header">
+                    <img id="artistImage" src="" alt="">
+                    <div class="artist-info">
+                        <span class="artist-badge">Artist</span>
+                        <h1 id="artistName"></h1>
+                        <p id="artistFollowers"></p>
+                    </div>
+                </div>
+                <div class="artist-actions">
+                    <button class="play-button-large" id="playArtistBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="follow-btn">Follow</button>
+                    <button class="action-btn">⋯</button>
+                </div>
+                <div class="artist-content">
+                    <div class="section">
+                        <h2>Popular</h2>
+                        <div id="artistPopular"></div>
+                    </div>
+                    <div class="section">
+                        <h2>Albums</h2>
+                        <div class="card-row" id="artistAlbums"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<footer class="player">
+    <div class="player-left">
+        <img id="playerCover" src="https://via.placeholder.com/60" alt="">
+        <div class="track-meta">
+            <div id="playerTitle">Select a song</div>
+            <div id="playerArtist">—</div>
+        </div>
+    </div>
+
+    <div class="player-center">
+        <div class="controls">
+            <button class="ctrl-btn" id="prevBtn">⏮</button>
+            <button class="play-btn-main" id="playBtn">▶</button>
+            <button class="ctrl-btn" id="nextBtn">⏭</button>
+        </div>
+        <div class="progress-container">
+            <span class="time" id="currentTime">0:00</span>
+            <input type="range" id="progressBar" value="0" min="0" max="100">
+            <span class="time" id="duration">0:00</span>
+        </div>
+    </div>
+
+    <div class="player-right">
+        <span class="volume-icon">🔊</span>
+        <input type="range" id="volumeBar" value="100" min="0" max="100">
+    </div>
+</footer>
+
+<audio id="audio" crossorigin="anonymous"></audio>
+<div id="youtube-player" style="position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;"></div>
+<script src="script.js"></script>
+</body>
+</html>
